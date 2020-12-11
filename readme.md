@@ -34,7 +34,3 @@ The output folder and file names can be changed under the config section of the 
 
 ### 3. portfolio_return
 1. The total portfolio return of each month as the sum of all the realised returns for the month.
-
-Mengyao (Miya) Zheng
-11/12/2020
-        
