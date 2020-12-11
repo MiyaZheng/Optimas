@@ -1,15 +1,16 @@
-Running the Script
+#Running the Script
 
     Just run the main.py file.
     The output folder and file names can be changed under the config section of the file.
 
-Folder Structure
+#Folder Structure
     /
     ----data -> Contains the data files for this task
     ----output -> It gets generated when the script is executed successfully. Contains the output in csv format (see the "Output csv Files" section)
     ----sample_output -> Should the code not work for some reason, I included the output files the code is supposed to generate from earlier runs.
 
-Output csv Files:
+#Output csv Files:
+
     1. monthly_action:
         1. This file is about the detailed action of each month
         2. The file contains 11 columns: MONTH, DATE, SYMBOL, IND_CODE, BUY_PRICE, BACK_LOW, BACK_VWAP, CUM_RETUN (%), REALIZED_PCT (%), REALIZED_RETURN, ACTION 
@@ -35,7 +36,7 @@ Output csv Files:
     3. portfolio_return:
         1. The total portfolio return of each month as the sum of all the realised returns for the month.
 
-####
+
 Mengyao (Miya) Zheng
 11/12/2020
         
