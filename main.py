@@ -63,18 +63,21 @@ months = combined_df['MONTH'].unique()
 for month in months:
     monthly_data = combined_df[combined_df['MONTH'] == month]
 
-    # Create and populate a dictionary where the symbol is the key and the value is a boolean.
+ # Create and populate a dictionary where the symbol is the key and the value is a boolean.
     # First, all the values are initialised as False. If an instrument is stop-sold, its corresponding value in the dictionary
     # will be set to True.
     sold_early = {}
     symbols = monthly_data['SYMBOL'].unique()
-    last_day = monthly_data['DATE'].tail(1).to_string(index=False).strip()
     for symbol in symbols:
         sold_early[symbol] = False
 
+    # Store the first and last dates for the given month
+    first_day = monthly_data['DATE'].head(1).to_string(index=False).strip()
+    last_day = monthly_data['DATE'].tail(1).to_string(index=False).strip()
+
     # Add a column to show the day-to-day breakdown of what happens to a given instrument
     monthly_data["ACTION"] = monthly_data.apply(lambda x: helpers.get_action(symbol=x['SYMBOL'], cumulative_return=x['CUM_RETURN (%)'], 
-    date=x['DATE'], last_day=last_day, sold_early=sold_early), axis=1)
+    date=x['DATE'], first_day=first_day, last_day=last_day, sold_early=sold_early), axis=1)
 
     # Get the final action (SELL or STOPSELL) for every instrument for the given month
     monthly_output_df = monthly_data[monthly_data["ACTION"].isin(["STOPSELL", "SELL"])]
